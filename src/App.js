@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+import "./App.css"
+import Clock from "./components/clock/clock"
+import Contact from "./components/contact/contact"
+import Navigation from "./components/navigation/navigation"
+import Welcome from "./components/welcome/welcome"
+import Jeopardy from "./components/jeopardy/Jeopardy"
+import { Route } from "react-router-dom"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+              <Navigation />
+                <Route
+                    exact
+                    path="/"
+                    render={props => <Welcome {...props} name="Eric" />}
+                />
+                <Route path="/clock" component={Clock} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/jeopardy" component={Jeopardy} />
+            </div>
+        )
+    }
 }
 
-export default App;
+export default App
